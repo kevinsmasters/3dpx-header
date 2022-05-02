@@ -412,9 +412,6 @@ class TPDX_Header {
                 </ul>
             </div>
             </div>
-            <div class="wrapper">
-            <h1>Meowdy!</h1>
-            </div>
         EOD;
             //$myoptions = get_option('headline_one_field');
             return $timeline;
