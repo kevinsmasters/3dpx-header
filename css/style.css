@@ -1,0 +1,103 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+  }
+  .wrapper {
+    width: 1280px;
+    margin: 0 auto;
+  }
+  #heroWrapper {
+    min-height: 405px;
+    background: rgb(51,55,56);
+  background: linear-gradient(90deg, rgba(51,55,56,1) 0%, rgba(78,82,82,1) 100%);
+  }
+  #heroWrapper h1 {
+    color: #fff;
+    font-size: 28px;
+    line-height: 30px
+  }
+  #heroWrapper p {
+    color: #fff;
+    font-size: 22px;
+    line-height: 25px;
+  }
+  #heroWrapper .slide {
+    max-width: 770px;
+    margin-left: 285px;
+    padding-top: 65px;
+    display: none;
+    height: 154px;
+  }
+  #heroWrapper .slide.shown {
+    display: block;
+  }
+  #timeLine {
+    border-bottom: 2px solid #fff;
+    padding: 30px 0 0;
+    margin-top: 2px;
+  }
+  #timeLine ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto -77px;
+    display: flex;
+    flex-direction: row;
+    color: #fff;
+    max-width: 900px;
+  }
+  #timeLine li {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex-grow: 1;
+  }
+  #timeLine li:nth-child(5) span.icon {
+    margin-top: -3px;
+  }
+  #timeLine li:nth-child(9) .icon {
+    position: relative;
+  }
+  #timeLine li:nth-child(9) .icon svg {
+    position: absolute;
+    left: -29px;
+    top: 18px;
+  }
+  #timeLine li span:not(.dot) {
+    opacity: .6;
+    height: 61px;
+  }
+  
+  #timeLine li span:nth-child(1) {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  #timeLine li span:nth-child(3) {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1.5px solid #fff;
+    margin: 0 auto;
+    display: block;
+    cursor: pointer;
+  }
+  .flag {
+    cursor: default;
+  }
+  #timeLine li.active span,
+  #timeLine li:hover span,
+  #timeLine li:nth-child(9) span {
+    opacity: 1;
+  }
+  .active:not(:nth-child(1)) .dot {
+    background-color: #c20e1a;
+  }
