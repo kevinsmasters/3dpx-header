@@ -5,7 +5,7 @@ console.log('meowdy - js loaded');
 const forward =()=> {
   //console.log('forward');
     let currDot = $('#timeLine .active');
-    let curIndex = currDot.index( "li" ) - 7;
+    let curIndex = currDot.prevAll().length;
     let liLen = $("#timeLine ul li").length;
     console.log("Index: " + curIndex );
     console.log("Length: " + liLen);
@@ -33,7 +33,7 @@ const forward =()=> {
     $('#timeLine li').removeClass('active');
     $(this).parent().addClass('active');
     //$(this).parent().css('border', '1px solid red');
-    var parentIndex = $(this).parent().index( "li" ) - 7;
+    var parentIndex = $(this).parent().prevAll().length;
     console.log("parent: ", parentIndex);
     $('.slide').removeClass('shown');
     $('.slide[data-slide='+(parentIndex) +']').addClass('shown');
