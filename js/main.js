@@ -1,12 +1,14 @@
 console.log('meowdy - js loaded');
 (function($) {
   $(document).ready(function(){
+    console.log('jquery init');
 const forward =()=> {
+  //console.log('forward');
     let currDot = $('#timeLine .active');
-    let curIndex = currDot.index( "li" );
+    let curIndex = currDot.index( "li" ) - 7;
     let liLen = $("#timeLine ul li").length;
-    //console.log("Index: " + curIndex );
-    //console.log("Length: " + liLen);
+    console.log("Index: " + curIndex );
+    console.log("Length: " + liLen);
     if(curIndex < liLen -2) {
       currDot.next('li').addClass('active');
       currDot.removeClass('active');
@@ -28,10 +30,11 @@ const forward =()=> {
   $('.dot:not(.flag)').on('click', function(){
     console.log('clicked');
     //forward();
-    $('li').removeClass('active');
+    $('#timeLine li').removeClass('active');
     $(this).parent().addClass('active');
-    var parentIndex = $(this).parent().index( "li" );
-    //console.log("parent: ", parentIndex);
+    //$(this).parent().css('border', '1px solid red');
+    var parentIndex = $(this).parent().index( "li" ) - 7;
+    console.log("parent: ", parentIndex);
     $('.slide').removeClass('shown');
     $('.slide[data-slide='+(parentIndex) +']').addClass('shown');
   });
