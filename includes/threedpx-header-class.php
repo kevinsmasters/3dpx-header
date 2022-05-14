@@ -244,12 +244,12 @@ class TPDX_Header {
             $timeline .= <<<EOD
             <div id="timeLine">
                 <ul>
-                <li class="active">
+                <li class="tl-item active">
                     <span>&nbsp;</span>
                     <span class="dot"></span>
                     <span>&nbsp;</span>
                 </li>
-                <li>
+                <li class="tl-item">
                     <span class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="body_1" width="72" height="54">
 
@@ -264,7 +264,7 @@ class TPDX_Header {
                     <span class="dot"></span>
                     <span>Pre-clinical</span>
                 </li>
-                <li>
+                <li class="tl-item">
                     <span>IND</span>
                     <span class="dot"></span>
                     <span class="icon">
@@ -279,7 +279,7 @@ class TPDX_Header {
                     </svg>
                     </span>
                 </li>
-                <li>
+                <li class="tl-item">
                     <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="body_1" width="82" height="61">
 
                         <g transform="matrix(0.79334116 0 0 0.79334116 7.2711024 -0)">
@@ -292,7 +292,7 @@ class TPDX_Header {
                     <span class="dot"></span>
                     <span>Phase 1</span>
                 </li>
-                <li>
+                <li class="tl-item">
                     <span>Phase 2a/b</span>
                     <span class="dot"></span>
                     <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="body_1" width="82" height="61">
@@ -303,7 +303,7 @@ class TPDX_Header {
                         </g>
                     </svg></span>
                 </li>
-                <li>
+                <li class="tl-item">
                     <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="body_1" width="82" height="61">
 
                         <g transform="matrix(0.79334116 0 0 0.79334116 7.2711024 -0)">
@@ -314,7 +314,7 @@ class TPDX_Header {
                     <span class="dot"></span>
                     <span>Phase 3</span>
                 </li>
-                <li>
+                <li class="tl-item">
                     <span>MAA/NDA</span>
                     <span class="dot"></span>
                     <span class="icon">
@@ -328,7 +328,7 @@ class TPDX_Header {
             </svg>
                     </span>
                 </li>
-                <li>
+                <li class="tl-item">
                     <span class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="body_1" width="72" height="54">
 
@@ -345,7 +345,7 @@ class TPDX_Header {
                     <span class="dot"></span>
                     <span>Post<br>Marketing</span>
                 </li>
-                <li>
+                <li class="tl_item flag">
                     <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="body_1" width="82" height="61">
 
                         <g transform="matrix(0.79334116 0 0 0.79334116 7.2711024 -0)">
@@ -353,7 +353,7 @@ class TPDX_Header {
                         <path d="M58.92 50.08C 58.269997 50.08 57.75 50.600002 57.75 51.25L57.75 51.25L57.75 66.53C 57.75 67.18 58.27 67.7 58.92 67.7C 59.569996 67.7 60.089996 67.18 60.089996 66.53L60.089996 66.53L60.089996 51.25C 60.089996 50.6 59.569996 50.08 58.92 50.08z" stroke="none" fill="#FFFFFF" fill-rule="nonzero" />
                         </g>
                     </svg></span>
-                    <span class="flag dot"></span>
+                    <span class="dot"></span>
                     <span>&nbsp;</span>
                 </li>
                 </ul>

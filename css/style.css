@@ -54,6 +54,7 @@ body {
     flex-grow: 1;
     font-weight: bold;
     font-size: 15px;
+    cursor: pointer;
   }
   #timeLine li:nth-child(5) span.icon {
     margin-top: -3px;
@@ -93,7 +94,6 @@ body {
     border: 1.5px solid #fff;
     margin: 0 auto;
     display: block;
-    cursor: pointer;
   }
   .flag {
     cursor: default;
@@ -111,6 +111,7 @@ body {
   #timeLine li:nth-child(9) span svg {
     opacity: 1;
   }
-  .active:not(:nth-child(1)) .dot {
+  li:hover .dot,
+  .active .dot {
     background-color: #c20e1a;
   }
