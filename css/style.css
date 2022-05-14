@@ -6,23 +6,26 @@ body {
     margin: 0 auto;
   }
   #heroWrapper {
-    min-height: 405px;
+    min-height: 385px;
     background: rgb(51,55,56);
   background: linear-gradient(90deg, rgba(51,55,56,1) 0%, rgba(78,82,82,1) 100%);
   }
   #heroWrapper h1 {
     color: #fff;
-    font-size: 28px;
-    line-height: 30px
+    font-size: 30px;
+    line-height: 32px;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
   #heroWrapper p {
     color: #fff;
-    font-size: 22px;
-    line-height: 25px;
+    font-size: 25px;
+    line-height: 27px;
+    margin-bottom: .5rem;
   }
   #heroWrapper .slide {
-    max-width: 770px;
-    margin-left: 285px;
+    max-width: 1280px;
+    margin: 0 auto;
     padding-top: 65px;
     display: none;
     height: 154px;
@@ -32,7 +35,7 @@ body {
   }
   #timeLine {
     border-bottom: 2px solid #fff;
-    padding: 30px 0 0;
+    padding: 10px 0 0;
     margin-top: 2px;
   }
   #timeLine ul {
@@ -49,6 +52,8 @@ body {
     flex-direction: column;
     text-align: center;
     flex-grow: 1;
+    font-weight: bold;
+    font-size: 15px;
   }
   #timeLine li:nth-child(5) span.icon {
     margin-top: -3px;
@@ -93,9 +98,17 @@ body {
   .flag {
     cursor: default;
   }
+  #timeLine li svg {
+    opacity: 0;
+  }
   #timeLine li.active span,
   #timeLine li:hover span,
   #timeLine li:nth-child(9) span {
+    opacity: 1;
+  }
+  #timeLine li.active span svg,
+  #timeLine li:hover span svg,
+  #timeLine li:nth-child(9) span svg {
     opacity: 1;
   }
   .active:not(:nth-child(1)) .dot {

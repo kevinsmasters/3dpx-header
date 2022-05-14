@@ -9,8 +9,6 @@ class TPDX_Header {
         // Add Settings and Fields
     	add_action( 'admin_init', array( $this, 'setup_sections' ) );
     	add_action( 'admin_init', array( $this, 'setup_fields' ) );
-
-        //add_filter('the_content', array( $this, 'tdpx_timeline_banner')); 
         add_action( 'init', array($this, 'tdpx_timeline_banner') );
     }
 
@@ -56,8 +54,6 @@ class TPDX_Header {
 
     public function setup_sections() {
         add_settings_section( 'main_section', 'My First Section Title', array( $this, 'section_callback' ), 'tdpx_fields' );
-        //add_settings_section( 'our_second_section', 'My Second Section Title', array( $this, 'section_callback' ), 'tdpx_fields' );
-        //add_settings_section( 'our_third_section', 'My Third Section Title', array( $this, 'section_callback' ), 'tdpx_fields' );
     }
 
     public function section_callback( $arguments ) {
@@ -65,12 +61,6 @@ class TPDX_Header {
     		case 'main_section':
     			echo 'Enter Timeline Values';
     			break;
-    		// case 'our_second_section':
-    		// 	echo 'This one is number two';
-    		// 	break;
-    		// case 'our_third_section':
-    		// 	echo 'Third time is the charm!';
-    		// 	break;
     	}
     }
 
@@ -200,38 +190,10 @@ class TPDX_Header {
 
         switch( $arguments['type'] ){
             case 'text':
-            case 'password':
-            case 'number':
                 printf( '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" />', $arguments['uid'], $arguments['type'], $arguments['placeholder'], $value );
                 break;
             case 'textarea':
                 printf( '<textarea name="%1$s" id="%1$s" placeholder="%2$s" rows="5" cols="50">%3$s</textarea>', $arguments['uid'], $arguments['placeholder'], $value );
-                break;
-            case 'select':
-            case 'multiselect':
-                if( ! empty ( $arguments['options'] ) && is_array( $arguments['options'] ) ){
-                    $attributes = '';
-                    $options_markup = '';
-                    foreach( $arguments['options'] as $key => $label ){
-                        $options_markup .= sprintf( '<option value="%s" %s>%s</option>', $key, selected( $value[ array_search( $key, $value, true ) ], $key, false ), $label );
-                    }
-                    if( $arguments['type'] === 'multiselect' ){
-                        $attributes = ' multiple="multiple" ';
-                    }
-                    printf( '<select name="%1$s[]" id="%1$s" %2$s>%3$s</select>', $arguments['uid'], $attributes, $options_markup );
-                }
-                break;
-            case 'radio':
-            case 'checkbox':
-                if( ! empty ( $arguments['options'] ) && is_array( $arguments['options'] ) ){
-                    $options_markup = '';
-                    $iterator = 0;
-                    foreach( $arguments['options'] as $key => $label ){
-                        $iterator++;
-                        $options_markup .= sprintf( '<label for="%1$s_%6$s"><input id="%1$s_%6$s" name="%1$s[]" type="%2$s" value="%3$s" %4$s /> %5$s</label><br/>', $arguments['uid'], $arguments['type'], $key, checked( $value[ array_search( $key, $value, true ) ], $key, false ), $label, $iterator );
-                    }
-                    printf( '<fieldset>%s</fieldset>', $options_markup );
-                }
                 break;
         }
 
@@ -251,50 +213,35 @@ class TPDX_Header {
     }
 
     public function tdpx_timeline_banner($content) {
-        
-        //$myoptions = get_option('headline_one_field');
-        //$content .= $timeline;
-        // printf( '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" />', $arguments['uid'], $arguments['type'], $arguments['placeholder'], $value );
-
-        //$content .= var_export( $myoptions ) . ' <<< is?';
-        //return $content;
 
         add_shortcode( 'sample-shortcode','shortcode_function'  );
+       
         function shortcode_function($timeline) {
-            $timeline = <<<EOD
-            <div id="heroWrapper">
-            <div class="slide shown" data-slide="0">
-                <h1>Navigating drug development</h1>
-                <p>We provide all core expertise needed to take a drug<br> development program from A to B or from A to Z, if required.</p>
-            </div>
-            <div class="slide" data-slide="1">
-                <h1>Pre-clinical title</h1>
-                <p>Subtitle.</p>
-            </div>
-            <div class="slide" data-slide="2">
-                <h1>IND title</h1>
-                <p>Subtitle.</p>
-            </div>
-            <div class="slide" data-slide="3">
-                <h1>Phase 1 title</h1>
-                <p>Subtitle.</p>
-            </div>
-            <div class="slide" data-slide="4">
-                <h1>Phase 2 title</h1>
-                <p>Subtitle.</p>
-            </div>
-            <div class="slide" data-slide="5">
-                <h1>Phase 3 title</h1>
-                <p>Subtitle.</p>
-            </div>
-            <div class="slide" data-slide="6">
-                <h1>MAA/NDA title</h1>
-                <p>Subtitle.</p>
-            </div>
-            <div class="slide" data-slide="7">
-                <h1>Post Marketing title</h1>
-                <p>Subtitle.</p>
-            </div>
+            $timeline_header = [];
+            $timeline_text = [];
+            $timeline_options = ['one','two','three','four','five','six','seven','eight'];
+            foreach($timeline_options as &$option) {
+                $opt_head = get_option('headline_'.$option.'_field');
+                array_push($timeline_header, $opt_head);
+                $opt_text = get_option('text_'.$option.'_field');
+                array_push($timeline_text, $opt_text);
+            }
+            
+            $timeline = '<div id="heroWrapper">';
+            for($i = 0; $i < count($timeline_options); $i++) {
+                if($i == 0) {
+                    $timeline .= '<div class="slide shown" data-slide="'.$i.'">';
+                } else {
+                    $timeline .= '<div class="slide" data-slide="'.$i.'">';
+                }
+
+                $timeline .= <<<EOD
+                    <h1>$timeline_header[$i]</h1>
+                    <p>$timeline_text[$i]</p>
+                </div>
+                EOD;
+            }
+            $timeline .= <<<EOD
             <div id="timeLine">
                 <ul>
                 <li class="active">
@@ -413,7 +360,6 @@ class TPDX_Header {
             </div>
             </div>
         EOD;
-            //$myoptions = get_option('headline_one_field');
             return $timeline;
         }
     }
