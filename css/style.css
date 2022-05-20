@@ -38,14 +38,14 @@ body {
     display: block;
   }
   #timeLine {
-    border-bottom: 2px solid #fff;
+    border-bottom: 2.5px solid #fff;
     padding: 10px 0 0;
     margin-top: 2px;
   }
   #timeLine ul {
     list-style-type: none;
     padding: 0;
-    margin: 0 auto -77px;
+    margin: 0 auto -78px;
     display: flex;
     flex-direction: row;
     color: #fff;
@@ -91,11 +91,11 @@ body {
     align-items: center;
   }
   .dot {
-    height: 10px;
-    width: 10px;
-    border-radius: 10px;
+    height: 12px;
+    width: 12px;
+    border-radius: 12px;
     background-color: #fff;
-    border: 1.5px solid #fff;
+    border: 2px solid #fff;
     margin: 0 auto;
     display: block;
   }
