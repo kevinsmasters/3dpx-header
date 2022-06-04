@@ -16,16 +16,20 @@ body {
     line-height: 32px;
     margin-bottom: 0;
     padding-bottom: 0;
+    max-width: 900px;
   }
   #heroWrapper p {
     color: #fff;
     font-size: 25px;
     line-height: 27px;
     margin-bottom: .5rem;
+    max-width: 900px;
   }
-  #heroWrapper p a,
+  #heroWrapper p a {
+    color: #E7C9B1;
+  }
   #heroWrapper p a:hover {
-    color: #fff;
+    color: #BF763B;
   }
   #heroWrapper .slide {
     max-width: 1280px;
@@ -68,7 +72,7 @@ body {
   }
   #timeLine li:nth-child(9) .icon svg {
     position: absolute;
-    left: -8px;
+    left: -5px;
     top: 18px;
   }
   #timeLine li span:not(.dot) {
