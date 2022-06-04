@@ -6,7 +6,7 @@ body {
     margin: 0 auto;
   }
   #heroWrapper {
-    min-height: 385px;
+    min-height: 500px;
     background: rgb(51,55,56);
   background: linear-gradient(90deg, rgba(51,55,56,1) 0%, rgba(78,82,82,1) 100%);
   }
@@ -26,7 +26,7 @@ body {
     max-width: 900px;
   }
   #heroWrapper p a {
-    color: #E7C9B1;
+    color: #d0661c;
   }
   #heroWrapper p a:hover {
     color: #BF763B;
@@ -34,7 +34,7 @@ body {
   #heroWrapper .slide {
     max-width: 1280px;
     margin: 0 auto;
-    padding-top: 65px;
+    padding-top: 112px;
     display: none;
     height: 154px;
   }
@@ -44,7 +44,7 @@ body {
   #timeLine {
     border-bottom: 2.5px solid #fff;
     padding: 10px 0 0;
-    margin-top: 2px;
+    margin-top: 30px;
   }
   #timeLine ul {
     list-style-type: none;
