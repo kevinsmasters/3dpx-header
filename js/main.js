@@ -1,4 +1,3 @@
-//console.log("meowdy - js loaded");
 (function ($) {
   $(document).ready(function () {
     //console.log("jquery init");
