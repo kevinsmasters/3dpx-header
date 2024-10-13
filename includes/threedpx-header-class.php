@@ -3,6 +3,7 @@
 class TPDX_Header {
 
     public function __construct() {
+
     	// Hook into the admin menu
     	add_action( 'admin_menu', array( $this, 'create_plugin_settings_page' ) );
 
@@ -10,6 +11,7 @@ class TPDX_Header {
     	add_action( 'admin_init', array( $this, 'setup_sections' ) );
     	add_action( 'admin_init', array( $this, 'setup_fields' ) );
         add_action( 'init', array($this, 'tdpx_timeline_banner') );
+
     }
 
     public function do_nothing_really() {
@@ -17,6 +19,7 @@ class TPDX_Header {
     }
 
     public function create_plugin_settings_page() {
+
     	// Add the menu item and page
     	$page_title = '3DPX Timeline';
     	$menu_title = '3DPX Timeline Editor';
@@ -27,9 +30,11 @@ class TPDX_Header {
     	$position = 100;
 
     	add_menu_page( $page_title, $menu_title, $capability, $slug, $callback, $icon, $position );
+
     }
 
     public function plugin_settings_page_content() { ?>
+
     	<div class="wrap">
     		<h2>3DPX Timeline Header Settings</h2><?php
             if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ){
@@ -44,28 +49,39 @@ class TPDX_Header {
     		</form>
     	</div> 
         <?php
+
     }
 
     public function admin_notice() { ?>
+
         <div class="notice notice-success is-dismissible">
             <p>Your settings have been updated!</p>
         </div><?php
+
     }
 
     public function setup_sections() {
+
         add_settings_section( 'main_section', 'My First Section Title', array( $this, 'section_callback' ), 'tdpx_fields' );
+
     }
 
     public function section_callback( $arguments ) {
+
     	switch( $arguments['id'] ){
+
     		case 'main_section':
     			echo 'Enter Timeline Values';
     			break;
+
     	}
+
     }
 
     public function setup_fields() {
+
         $fields = array(
+
             array(
                 'uid' => 'headline_one_field',
                 'label' => 'Header 1',
@@ -172,12 +188,16 @@ class TPDX_Header {
                 'section' => 'main_section',
         		'type' => 'textarea',
         	),
+
         );
+
     	foreach( $fields as $field ){
 
         	add_settings_field( $field['uid'], $field['label'], array( $this, 'field_callback' ), 'tdpx_fields', $field['section'], $field );
             register_setting( 'tdpx_fields', $field['uid'] );
+
     	}
+
     }
 
     public function field_callback( $arguments ) {
@@ -189,12 +209,14 @@ class TPDX_Header {
         }
 
         switch( $arguments['type'] ){
+
             case 'text':
                 printf( '<input name="%1$s" id="%1$s" type="%2$s" placeholder="%3$s" value="%4$s" />', $arguments['uid'], $arguments['type'], $arguments['placeholder'], $value );
                 break;
             case 'textarea':
                 printf( '<textarea name="%1$s" id="%1$s" placeholder="%2$s" rows="5" cols="50">%3$s</textarea>', $arguments['uid'], $arguments['placeholder'], $value );
                 break;
+
         }
 
         if( $helper = $arguments['helper'] ){
@@ -208,7 +230,6 @@ class TPDX_Header {
     }
 
     public function getdata_func() {
-              
         return $output; 
     }
 
@@ -217,18 +238,24 @@ class TPDX_Header {
         add_shortcode( 'sample-shortcode','shortcode_function'  );
        
         function shortcode_function($timeline) {
+
             $timeline_header = [];
             $timeline_text = [];
             $timeline_options = ['one','two','three','four','five','six','seven','eight'];
+
             foreach($timeline_options as &$option) {
+
                 $opt_head = get_option('headline_'.$option.'_field');
                 array_push($timeline_header, $opt_head);
                 $opt_text = get_option('text_'.$option.'_field');
                 array_push($timeline_text, $opt_text);
+
             }
             
             $timeline = '<div id="heroWrapper">';
+
             for($i = 0; $i < count($timeline_options); $i++) {
+
                 if($i == 0) {
                     $timeline .= '<div class="slide shown" data-slide="'.$i.'">';
                 } else {
@@ -240,7 +267,9 @@ class TPDX_Header {
                     <p>$timeline_text[$i]</p>
                 </div>
                 EOD;
+
             }
+
             $timeline .= <<<EOD
             <div id="timeLine">
                 <ul>
@@ -360,10 +389,11 @@ class TPDX_Header {
             </div>
             </div>
         EOD;
-            return $timeline;
+
+        return $timeline;
+
         }
     }
-    
 
 }
 
