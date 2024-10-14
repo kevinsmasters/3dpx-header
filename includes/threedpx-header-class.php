@@ -29,7 +29,15 @@ class TPDX_Header {
     	$icon = 'dashicons-admin-plugins';
     	$position = 100;
 
-    	add_menu_page( $page_title, $menu_title, $capability, $slug, $callback, $icon, $position );
+    	add_menu_page( 
+            $page_title,
+            $menu_title,
+            $capability,
+            $slug,
+            $callback,
+            $icon,
+            $position,
+        );
 
     }
 
@@ -37,7 +45,8 @@ class TPDX_Header {
 
     	<div class="wrap">
     		<h2>3DPX Timeline Header Settings</h2><?php
-            if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] ){
+            if ( isset( $_GET['settings-updated'] ) &&
+                $_GET['settings-updated'] ){
                   $this->admin_notice();
             } ?>
     		<form method="POST" action="options.php">
@@ -62,7 +71,8 @@ class TPDX_Header {
 
     public function setup_sections() {
 
-        add_settings_section( 'main_section', 'My First Section Title', array( $this, 'section_callback' ), 'tdpx_fields' );
+        add_settings_section( 'main_section', 'My First Section Title', 
+            array( $this, 'section_callback' ), 'tdpx_fields' );
 
     }
 
@@ -193,7 +203,9 @@ class TPDX_Header {
 
     	foreach( $fields as $field ){
 
-        	add_settings_field( $field['uid'], $field['label'], array( $this, 'field_callback' ), 'tdpx_fields', $field['section'], $field );
+        	add_settings_field( $field['uid'], $field['label'],
+                array( $this, 'field_callback' ),
+                'tdpx_fields', $field['section'], $field );
             register_setting( 'tdpx_fields', $field['uid'] );
 
     	}
@@ -241,7 +253,16 @@ class TPDX_Header {
 
             $timeline_header = [];
             $timeline_text = [];
-            $timeline_options = ['one','two','three','four','five','six','seven','eight'];
+            $timeline_options = [ //TODO can this be refactored?
+                'one',
+                'two',
+                'three',
+                'four',
+                'five',
+                'six',
+                'seven',
+                'eight',
+            ];
 
             foreach($timeline_options as &$option) {
 
@@ -257,9 +278,11 @@ class TPDX_Header {
             for($i = 0; $i < count($timeline_options); $i++) {
 
                 if($i == 0) {
-                    $timeline .= '<div class="slide shown" data-slide="'.$i.'">';
+                    $timeline .= 
+                        '<div class="slide shown" data-slide="'.$i.'">';
                 } else {
-                    $timeline .= '<div class="slide" data-slide="'.$i.'">';
+                    $timeline .= 
+                        '<div class="slide" data-slide="'.$i.'">';
                 }
 
                 $timeline .= <<<EOD
