@@ -13,7 +13,11 @@
  }
 
  // load scripts
-require_once(plugin_dir_path(__FILE__). '/includes/threedpx-header-scripts.php');
+require_once(
+    plugin_dir_path(__FILE__). '/includes/threedpx-header-scripts.php'
+);
 
 // load class
-require_once(plugin_dir_path(__FILE__). '/includes/threedpx-header-class.php');
+require_once(
+    plugin_dir_path(__FILE__). '/includes/threedpx-header-class.php'
+);
