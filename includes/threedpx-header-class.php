@@ -5,7 +5,8 @@ class TPDX_Header {
     public function __construct() {
 
     	// Hook into the admin menu
-    	add_action( 'admin_menu', array( $this, 'create_plugin_settings_page' ) );
+    	add_action( 'admin_menu', 
+            array( $this, 'create_plugin_settings_page' ) );
 
         // Add Settings and Fields
     	add_action( 'admin_init', array( $this, 'setup_sections' ) );
